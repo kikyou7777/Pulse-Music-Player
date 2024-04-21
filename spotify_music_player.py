@@ -10,4 +10,8 @@ class SpotifyMusicPlayer:
             redirect_uri=redirect_uri,
             scope=self.scope
         ))
+        self.last_bpm = None  # Store the last BPM that triggered a song change
+        self.threshold = 10   # BPM change threshold to trigger a new song
+
+
 
