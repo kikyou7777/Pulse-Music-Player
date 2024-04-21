@@ -14,4 +14,14 @@ class SpotifyMusicPlayer:
         self.threshold = 10   # BPM change threshold to trigger a new song
 
 
+    def play_song(self, bpm):
+        if self.last_bpm is None or abs(self.last_bpm - bpm) >= self.threshold:
+            # Only play a new song if the BPM change exceeds the threshold or if no song has been played yet
+            self.last_bpm = bpm  # Update the last BPM
+            tracks = self.sp.recommendations(seed_genres=['workout'], limit=1, target_tempo=bpm)['tracks']
+            if tracks:
+                track_uri = tracks[0]['uri']
+                self.sp.start_playback(uris=[track_uri])
+                print(f"Playing: {tracks[0]['name']} by {tracks[0]['artists'][0]['name']} at {bpm} BPM")
+
 
