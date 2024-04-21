@@ -24,4 +24,10 @@ class SpotifyMusicPlayer:
                 self.sp.start_playback(uris=[track_uri])
                 print(f"Playing: {tracks[0]['name']} by {tracks[0]['artists'][0]['name']} at {bpm} BPM")
 
-
+    def get_current_device(self):
+        """ Returns the first available device to control playback. """
+        devices = self.sp.devices()
+        for device in devices['devices']:
+            if device['is_active']:
+                return device['id']
+        return None
