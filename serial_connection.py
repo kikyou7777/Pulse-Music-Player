@@ -1,5 +1,8 @@
 import serial
 
+def setup_serial(port='COM4', baudrate=115200, timeout=0.1):
+    return serial.Serial(port, baudrate, timeout)
+
 def read():
     # Update the port later
     arduino = serial.Serial(port = 'COM4', baudrate = "115200", timeout =.1)
