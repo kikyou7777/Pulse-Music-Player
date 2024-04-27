@@ -7,11 +7,11 @@ class SpotifyMusicPlayer:
         self.sp = spotify_authorization.get_spotify_client()
 
     def play_songs(self, BPM):
+  
 
         recommendations = self.sp.recommendations(seed_genres=['work-out'], limit=1,
-                                                  target_tempo = BPM,
-                                                  target_danceability=0.6, min_energy=0.6)
-
+                                                  target_tempo = BPM, min_energy=0.6)
+       
         if recommendations['tracks']:
             track_uri = recommendations['tracks'][0]['uri']
             self.sp.start_playback(uris=[track_uri])

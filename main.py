@@ -29,22 +29,24 @@ from spotify_music_player import SpotifyMusicPlayer
 
 
 def read_bpm(arduino):
-    if arduino.in_waiting > 0:
-        data = arduino.readline().decode().strip()
+    arduino.reset_input_buffer()
+
+    while arduino.in_waiting == 0:
+        pass
+
+    data = arduino.readline().decode().strip()
   
-        try:
-            bpm = int(data) 
-            return bpm
-        except ValueError:
-            print("Failed to parse BPM values")
-            return None
-    else:
-        print("No data available")
+    try:
+        bpm = int(data) 
+        return bpm
+    except ValueError:
+        print("Failed to parse BPM values")
         return None
+ 
 
 
 def setup_serial():
-    return serial.Serial(port = '/dev/cu.usbserial-10', baudrate = 115200, parity = 'N', stopbits= 1, timeout = 1)
+    return serial.Serial(port = 'COM4', baudrate = 115200, parity = 'N', stopbits= 1, timeout = 1)
 
 
 def main():
