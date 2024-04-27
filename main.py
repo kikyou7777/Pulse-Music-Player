@@ -44,7 +44,7 @@ def read_bpm(arduino):
 
 
 def setup_serial():
-    return serial.Serial(port = 'COM4', baudrate = 115200, parity = 'N', stopbits= 1, timeout = 1)
+    return serial.Serial(port = '/dev/cu.usbserial-10', baudrate = 115200, parity = 'N', stopbits= 1, timeout = 1)
 
 
 def main():
