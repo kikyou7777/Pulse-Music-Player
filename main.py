@@ -1,12 +1,11 @@
 
 # Spotify credentials below (someone please remind me to cancel this premium account after we present)
-# username: eitproject
+
 # passcode: 123eitproject
+
 import serial
 import time
-import serial_connection
-import spotify_authorization
-import querySongs
+
 
 from spotify_music_player import SpotifyMusicPlayer
 
